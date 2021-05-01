@@ -75,7 +75,6 @@ def edit_topping(request,topping_id):
 @login_required
 def comments(request, pizza_id):
     pizza = Pizza.objects.get(id=pizza_id)
-    comments = Comment.object.filter(id=pizza_id)
     if request.method != 'POST':
         form = CommentForm()
     else:
@@ -84,9 +83,9 @@ def comments(request, pizza_id):
             comments = form.save(commit=False)
             comments.pizza = pizza
             comments.owner = request.user
-            comments.save()
+            form.save()
             return redirect('pizzas:pizza',pizza_id=pizza_id)
-    context = {'pizza':pizza, 'comments':comments}
+    context = {'form':form, 'pizza':pizza}
     return render(request, 'pizzas/comments.html', context) 
 
     '''

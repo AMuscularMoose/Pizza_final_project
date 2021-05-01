@@ -10,6 +10,18 @@
     <li>
         <p>{{topping.name | linebreaks}}</p>
     </li>
+    {% if pizza.id is 1 %}
+    <p>
+        <img src="https://www.nicepng.com/png/detail/812-8126235_hawaiian-pizza-png.png" class="img-thumbnail"
+            style="max-height:300px" alt="">
+    </p>
+    {% endif %}
+    {% if pizza.id is 2 %}
+    <p>
+        <img src="https://napolipizzalv.com/wp-content/uploads/2019/10/DSC_0956-min.png" class="img-thumbnail"
+            style="max-height:300px" alt="">
+    </p>
+    {% endif %}
     <p>
         <a href="{% url 'pizzas:edit_topping' topping.id %}">Edit Topping</a>
     </p>
