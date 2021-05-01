@@ -31,12 +31,18 @@
 </ul>
 
 <p> <a href="{% url 'pizzas:new_topping' pizza.id %}">Add a new Topping</a> </p>
-
+<h2>{{ comments.name }} Comments</h2>
 <ul>
     {% for comment in comments %}
-    <li>
-        <p>{{comment.name | linebreaks}}</p>
-    </li>
+    <div class="comments" style="padding: 10px;">
+        <p class="font-weight-bold">
+            {{ comments.name }}
+            <span class=" text-muted font-weight-normal">
+                {{ comments.date_added }}
+            </span>
+        </p>
+        {{ comments.name | linebreaks }}
+    </div>
     {% empty %}
     <li>There are no comments for this Pizza</li>
     {% endfor %}
