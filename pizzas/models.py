@@ -22,10 +22,9 @@ class Topping(models.Model):
         return self.name
 
 class Comment(models.Model):
-    pizza = models.ForeignKey(Pizza, on_delete=models.CASCADE)
-    name = models.CharField(max_length=200)
-    date_added = models.DateTimeField(auto_now_add=True)
+    pizza = models.ForeignKey(Pizza, on_delete=models.CASCADE,related_name='comments')
+    name = models.TextField(max_length=200,blank=True)
+    date_added = models.DateTimeField(auto_now_add=True,blank=True)
 
     def __str__(self):
         return self.name
-

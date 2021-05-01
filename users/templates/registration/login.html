@@ -1,5 +1,5 @@
 {% extends "pizzas/base.html" %}
-
+{% load bootstrap4 %}
 
 {% block content %}
 
@@ -11,7 +11,7 @@
     {% csrf_token %}
     {{ form.as_p }}
 
-    <button name="submit">Log In</button>
+    <button class="btn btn-outline-primary" name="submit">Log in</button>
     <input type="hidden" name="next" value="{% url 'pizzas:index' %}" />
 </form>
 

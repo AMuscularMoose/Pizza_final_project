@@ -1,16 +1,24 @@
 {% extends "pizzas/base.html" %}
+{% load bootstrap4 %}
 
 {% block content %}
 <p> <a href="{% url 'pizzas:pizza' pizza.id %}">{{ pizza }}</a> </p>
 
-<p> Comment on this Pizza: </p>
+<p>
+<h2>Comments</h2>
+</p>
 
-<form action="{% url 'pizzas:comments' pizza.id %}" method='post'>
+<form type="text" name="comment" placeholder="Enter Comment" action="{% url 'pizzas:comments' pizza.id %}"
+    method='post'>
 
     {% csrf_token %}
-    {{ form.as_p }}
+    {% bootstrap_form form %}
 
+    {% if user.is_authenticated %}
     <button name="submit" class="btn btn-outline-primary">Add Comment</button>
+    <input type="hidden" name="next" value="{% url 'pizzas:index' %}" />
+    {% endif %}
+
 </form>
 
 {% endblock content %}
